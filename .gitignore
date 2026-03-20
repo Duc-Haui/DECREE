@@ -2,6 +2,7 @@
 **/log
 **/trigger_inv
 **/vallog
+**/detect_log
 data
 output
 *.png
