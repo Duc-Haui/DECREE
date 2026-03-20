@@ -1,5 +1,5 @@
 
-from tkinter import image_names
+#from tkinter import image_names
 import torchvision
 from torch.utils.data import Dataset, DataLoader
 from torchvision import transforms

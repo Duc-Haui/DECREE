@@ -1,0 +1,205 @@
+Namespace(arch='resnet50', batch_size=16, encoder_path='output/CLIP_text/stl10_backdoored_encoder/model_19_tg24_imagenet.pth', encoder_usage_info='CLIP', gpu='cpu', id='_CLIP_text_stl10_model_19_tg24_imagenet', lr=0.5, mask_init='rand', model_flag='backdoor', result_file='resultfinal_cliptxt_stl10.txt', seed=80, thres=0.99)
+Using device: cpu
+backdoor loaded: output/CLIP_text/stl10_backdoored_encoder/model_19_tg24_imagenet.pth
+trigger: trigger/trigger_pt_white_185_24.npz
+mask_size:224
+shadow transform: Compose(
+    Normalize(mean=(0.485, 0.456, 0.406), std=(0.229, 0.224, 0.225))
+)
+shadow dataset size: 20
+Config: lambda_min: 1e-07, adapt_lambda: 5.0, lambda_set_patience: 10,succ_threshold: 0.99, early_stop_patience: 35,
+epoch: 0  lr: 0.5000
+e=0, loss=62.346620, loss_cos=-0.753505, loss_reg=63100.124802, cur_reg_best=10000000.000000, es_reg_best:10000000.000000
+epoch: 1  lr: 0.5000
+e=1, loss=23.938576, loss_cos=-0.552828, loss_reg=24491.403845, cur_reg_best=10000000.000000, es_reg_best:10000000.000000
+epoch: 2  lr: 0.5000
+step1:loss_lambda is down to 0.0002
+e=2, loss=7.724164, loss_cos=-0.505851, loss_reg=8230.014850, cur_reg_best=10000000.000000, es_reg_best:10000000.000000
+epoch: 3  lr: 0.5000
+e=3, loss=0.177688, loss_cos=-0.567445, loss_reg=3725.664174, cur_reg_best=10000000.000000, es_reg_best:10000000.000000
+epoch: 4  lr: 0.5000
+e=4, loss=0.034764, loss_cos=-0.534853, loss_reg=2848.083133, cur_reg_best=10000000.000000, es_reg_best:10000000.000000
+epoch: 5  lr: 0.5000
+step1:loss_lambda is down to 4e-05
+e=5, loss=-0.074479, loss_cos=-0.591430, loss_reg=2584.757978, cur_reg_best=10000000.000000, es_reg_best:10000000.000000
+epoch: 6  lr: 0.5000
+e=6, loss=-0.625364, loss_cos=-0.724017, loss_reg=2466.330295, cur_reg_best=10000000.000000, es_reg_best:10000000.000000
+epoch: 7  lr: 0.5000
+e=7, loss=-0.551125, loss_cos=-0.650735, loss_reg=2490.228349, cur_reg_best=10000000.000000, es_reg_best:10000000.000000
+epoch: 8  lr: 0.5000
+step1:loss_lambda is down to 8.000000000000001e-06
+e=8, loss=-0.603729, loss_cos=-0.706632, loss_reg=2572.577105, cur_reg_best=10000000.000000, es_reg_best:10000000.000000
+epoch: 9  lr: 0.5000
+e=9, loss=-0.755916, loss_cos=-0.777071, loss_reg=2644.337968, cur_reg_best=10000000.000000, es_reg_best:10000000.000000
+epoch: 10  lr: 0.5000
+e=10, loss=-0.775926, loss_cos=-0.797875, loss_reg=2743.565686, cur_reg_best=10000000.000000, es_reg_best:10000000.000000
+epoch: 11  lr: 0.5000
+step1:loss_lambda is down to 1.6000000000000004e-06
+e=11, loss=-0.765476, loss_cos=-0.788314, loss_reg=2854.754947, cur_reg_best=10000000.000000, es_reg_best:10000000.000000
+epoch: 12  lr: 0.5000
+e=12, loss=-0.806150, loss_cos=-0.810892, loss_reg=2963.377555, cur_reg_best=10000000.000000, es_reg_best:10000000.000000
+epoch: 13  lr: 0.5000
+e=13, loss=-0.830041, loss_cos=-0.834986, loss_reg=3090.256755, cur_reg_best=10000000.000000, es_reg_best:10000000.000000
+epoch: 14  lr: 0.5000
+step1:loss_lambda is down to 3.2000000000000006e-07
+e=14, loss=-0.875719, loss_cos=-0.880903, loss_reg=3239.930562, cur_reg_best=10000000.000000, es_reg_best:10000000.000000
+epoch: 15  lr: 0.5000
+e=15, loss=-0.876776, loss_cos=-0.877863, loss_reg=3396.822060, cur_reg_best=10000000.000000, es_reg_best:10000000.000000
+epoch: 16  lr: 0.5000
+e=16, loss=-0.882205, loss_cos=-0.883340, loss_reg=3545.887305, cur_reg_best=10000000.000000, es_reg_best:10000000.000000
+epoch: 17  lr: 0.5000
+step1:loss_lambda is down to 6.400000000000002e-08
+e=17, loss=-0.892099, loss_cos=-0.893291, loss_reg=3723.908427, cur_reg_best=10000000.000000, es_reg_best:10000000.000000
+epoch: 18  lr: 0.5000
+e=18, loss=-0.913003, loss_cos=-0.913251, loss_reg=3883.401479, cur_reg_best=10000000.000000, es_reg_best:10000000.000000
+epoch: 19  lr: 0.5000
+e=19, loss=-0.939604, loss_cos=-0.939861, loss_reg=4005.833309, cur_reg_best=10000000.000000, es_reg_best:10000000.000000
+epoch: 20  lr: 0.5000
+step1:loss_lambda is down to 6.400000000000002e-08
+e=20, loss=-0.932597, loss_cos=-0.932859, loss_reg=4096.742234, cur_reg_best=10000000.000000, es_reg_best:10000000.000000
+epoch: 21  lr: 0.5000
+e=21, loss=-0.940064, loss_cos=-0.940333, loss_reg=4202.044423, cur_reg_best=10000000.000000, es_reg_best:10000000.000000
+epoch: 22  lr: 0.5000
+e=22, loss=-0.932901, loss_cos=-0.933179, loss_reg=4347.143177, cur_reg_best=10000000.000000, es_reg_best:10000000.000000
+epoch: 23  lr: 0.5000
+step1:loss_lambda is down to 6.400000000000002e-08
+e=23, loss=-0.957533, loss_cos=-0.957821, loss_reg=4494.924015, cur_reg_best=10000000.000000, es_reg_best:10000000.000000
+epoch: 24  lr: 0.5000
+e=24, loss=-0.959497, loss_cos=-0.959792, loss_reg=4618.542984, cur_reg_best=10000000.000000, es_reg_best:10000000.000000
+epoch: 25  lr: 0.5000
+e=25, loss=-0.950979, loss_cos=-0.951281, loss_reg=4717.646875, cur_reg_best=10000000.000000, es_reg_best:10000000.000000
+epoch: 26  lr: 0.5000
+step1:loss_lambda is down to 6.400000000000002e-08
+e=26, loss=-0.964827, loss_cos=-0.965136, loss_reg=4824.329759, cur_reg_best=10000000.000000, es_reg_best:10000000.000000
+epoch: 27  lr: 0.5000
+e=27, loss=-0.954096, loss_cos=-0.954413, loss_reg=4958.969627, cur_reg_best=10000000.000000, es_reg_best:10000000.000000
+epoch: 28  lr: 0.5000
+e=28, loss=-0.955735, loss_cos=-0.956059, loss_reg=5058.972087, cur_reg_best=10000000.000000, es_reg_best:10000000.000000
+epoch: 29  lr: 0.5000
+step1:loss_lambda is down to 6.400000000000002e-08
+e=29, loss=-0.957490, loss_cos=-0.957822, loss_reg=5185.572137, cur_reg_best=10000000.000000, es_reg_best:10000000.000000
+epoch: 30  lr: 0.5000
+e=30, loss=-0.965651, loss_cos=-0.965993, loss_reg=5341.124524, cur_reg_best=10000000.000000, es_reg_best:10000000.000000
+epoch: 31  lr: 0.5000
+e=31, loss=-0.968408, loss_cos=-0.968762, loss_reg=5531.645339, cur_reg_best=10000000.000000, es_reg_best:10000000.000000
+epoch: 32  lr: 0.5000
+step1:loss_lambda is down to 6.400000000000002e-08
+e=32, loss=-0.961577, loss_cos=-0.961943, loss_reg=5725.552729, cur_reg_best=10000000.000000, es_reg_best:10000000.000000
+epoch: 33  lr: 0.5000
+e=33, loss=-0.963360, loss_cos=-0.963744, loss_reg=6001.200067, cur_reg_best=10000000.000000, es_reg_best:10000000.000000
+epoch: 34  lr: 0.5000
+e=34, loss=-0.956082, loss_cos=-0.956487, loss_reg=6318.198680, cur_reg_best=10000000.000000, es_reg_best:10000000.000000
+epoch: 35  lr: 0.5000
+step1:loss_lambda is down to 6.400000000000002e-08
+e=35, loss=-0.961045, loss_cos=-0.961468, loss_reg=6602.532033, cur_reg_best=10000000.000000, es_reg_best:10000000.000000
+epoch: 36  lr: 0.5000
+e=36, loss=-0.968983, loss_cos=-0.969421, loss_reg=6850.871703, cur_reg_best=10000000.000000, es_reg_best:10000000.000000
+epoch: 37  lr: 0.5000
+e=37, loss=-0.962634, loss_cos=-0.963091, loss_reg=7127.169775, cur_reg_best=10000000.000000, es_reg_best:10000000.000000
+epoch: 38  lr: 0.5000
+step1:loss_lambda is down to 6.400000000000002e-08
+e=38, loss=-0.965472, loss_cos=-0.965952, loss_reg=7493.257309, cur_reg_best=10000000.000000, es_reg_best:10000000.000000
+epoch: 39  lr: 0.5000
+e=39, loss=-0.965127, loss_cos=-0.965631, loss_reg=7882.270643, cur_reg_best=10000000.000000, es_reg_best:10000000.000000
+epoch: 40  lr: 0.5000
+e=40, loss=-0.969353, loss_cos=-0.969889, loss_reg=8368.852704, cur_reg_best=10000000.000000, es_reg_best:10000000.000000
+epoch: 41  lr: 0.5000
+step1:loss_lambda is down to 6.400000000000002e-08
+e=41, loss=-0.969911, loss_cos=-0.970469, loss_reg=8728.791828, cur_reg_best=10000000.000000, es_reg_best:10000000.000000
+epoch: 42  lr: 0.5000
+e=42, loss=-0.973035, loss_cos=-0.973611, loss_reg=9012.417615, cur_reg_best=10000000.000000, es_reg_best:10000000.000000
+epoch: 43  lr: 0.5000
+e=43, loss=-0.969629, loss_cos=-0.970226, loss_reg=9320.850113, cur_reg_best=10000000.000000, es_reg_best:10000000.000000
+epoch: 44  lr: 0.5000
+step1:loss_lambda is down to 6.400000000000002e-08
+e=44, loss=-0.977952, loss_cos=-0.978567, loss_reg=9605.866939, cur_reg_best=10000000.000000, es_reg_best:10000000.000000
+epoch: 45  lr: 0.5000
+e=45, loss=-0.978084, loss_cos=-0.978718, loss_reg=9916.505674, cur_reg_best=10000000.000000, es_reg_best:10000000.000000
+epoch: 46  lr: 0.5000
+e=46, loss=-0.979769, loss_cos=-0.980420, loss_reg=10168.076003, cur_reg_best=10000000.000000, es_reg_best:10000000.000000
+epoch: 47  lr: 0.5000
+step1:loss_lambda is down to 6.400000000000002e-08
+e=47, loss=-0.973281, loss_cos=-0.973951, loss_reg=10479.670489, cur_reg_best=10000000.000000, es_reg_best:10000000.000000
+epoch: 48  lr: 0.5000
+e=48, loss=-0.959800, loss_cos=-0.960506, loss_reg=11043.072836, cur_reg_best=10000000.000000, es_reg_best:10000000.000000
+epoch: 49  lr: 0.5000
+e=49, loss=-0.969964, loss_cos=-0.970718, loss_reg=11785.063973, cur_reg_best=10000000.000000, es_reg_best:10000000.000000
+epoch: 50  lr: 0.5000
+step1:loss_lambda is down to 6.400000000000002e-08
+e=50, loss=-0.973723, loss_cos=-0.974512, loss_reg=12338.500581, cur_reg_best=10000000.000000, es_reg_best:10000000.000000
+epoch: 51  lr: 0.5000
+e=51, loss=-0.968035, loss_cos=-0.968854, loss_reg=12803.617258, cur_reg_best=10000000.000000, es_reg_best:10000000.000000
+epoch: 52  lr: 0.5000
+e=52, loss=-0.966514, loss_cos=-0.967370, loss_reg=13370.258528, cur_reg_best=10000000.000000, es_reg_best:10000000.000000
+epoch: 53  lr: 0.5000
+step1:loss_lambda is down to 6.400000000000002e-08
+e=53, loss=-0.975745, loss_cos=-0.976656, loss_reg=14226.503466, cur_reg_best=10000000.000000, es_reg_best:10000000.000000
+epoch: 54  lr: 0.5000
+e=54, loss=-0.979094, loss_cos=-0.980050, loss_reg=14941.900214, cur_reg_best=10000000.000000, es_reg_best:10000000.000000
+epoch: 55  lr: 0.5000
+e=55, loss=-0.972017, loss_cos=-0.973010, loss_reg=15518.981465, cur_reg_best=10000000.000000, es_reg_best:10000000.000000
+epoch: 56  lr: 0.5000
+step1:loss_lambda is down to 6.400000000000002e-08
+e=56, loss=-0.975277, loss_cos=-0.976300, loss_reg=15982.963928, cur_reg_best=10000000.000000, es_reg_best:10000000.000000
+epoch: 57  lr: 0.5000
+e=57, loss=-0.980669, loss_cos=-0.981714, loss_reg=16332.360114, cur_reg_best=10000000.000000, es_reg_best:10000000.000000
+epoch: 58  lr: 0.5000
+e=58, loss=-0.983278, loss_cos=-0.984340, loss_reg=16581.149614, cur_reg_best=10000000.000000, es_reg_best:10000000.000000
+epoch: 59  lr: 0.5000
+step1:loss_lambda is down to 6.400000000000002e-08
+e=59, loss=-0.981848, loss_cos=-0.982919, loss_reg=16736.945214, cur_reg_best=10000000.000000, es_reg_best:10000000.000000
+epoch: 60  lr: 0.5000
+e=60, loss=-0.980271, loss_cos=-0.981351, loss_reg=16873.659867, cur_reg_best=10000000.000000, es_reg_best:10000000.000000
+epoch: 61  lr: 0.5000
+e=61, loss=-0.981373, loss_cos=-0.982469, loss_reg=17127.682751, cur_reg_best=10000000.000000, es_reg_best:10000000.000000
+epoch: 62  lr: 0.5000
+step1:loss_lambda is down to 6.400000000000002e-08
+e=62, loss=-0.983522, loss_cos=-0.984642, loss_reg=17495.451555, cur_reg_best=10000000.000000, es_reg_best:10000000.000000
+epoch: 63  lr: 0.5000
+e=63, loss=-0.979633, loss_cos=-0.980770, loss_reg=17770.855177, cur_reg_best=10000000.000000, es_reg_best:10000000.000000
+epoch: 64  lr: 0.5000
+e=64, loss=-0.987777, loss_cos=-0.988930, loss_reg=18021.031056, cur_reg_best=18079.390621, es_reg_best:18079.390621
+epoch: 65  lr: 0.5000
+e=65, loss=-0.985824, loss_cos=-0.986991, loss_reg=18227.312061, cur_reg_best=18079.390621, es_reg_best:18079.390621
+epoch: 66  lr: 0.5000
+e=66, loss=-0.986374, loss_cos=-0.987549, loss_reg=18364.746510, cur_reg_best=18079.390621, es_reg_best:18079.390621
+epoch: 67  lr: 0.5000
+e=67, loss=-0.985188, loss_cos=-0.986375, loss_reg=18550.345990, cur_reg_best=18079.390621, es_reg_best:18079.390621
+epoch: 68  lr: 0.5000
+step0:loss_lambda is down to 6.400000000000002e-08
+e=68, loss=-0.986710, loss_cos=-0.987912, loss_reg=18778.419016, cur_reg_best=18079.390621, es_reg_best:18079.390621
+epoch: 69  lr: 0.5000
+e=69, loss=-0.986955, loss_cos=-0.988177, loss_reg=19089.628113, cur_reg_best=18079.390621, es_reg_best:18079.390621
+epoch: 70  lr: 0.5000
+e=70, loss=-0.980314, loss_cos=-0.981552, loss_reg=19338.190254, cur_reg_best=18079.390621, es_reg_best:18079.390621
+epoch: 71  lr: 0.5000
+e=71, loss=-0.984876, loss_cos=-0.986129, loss_reg=19571.148206, cur_reg_best=18079.390621, es_reg_best:18079.390621
+epoch: 72  lr: 0.5000
+e=72, loss=-0.988116, loss_cos=-0.989384, loss_reg=19826.349493, cur_reg_best=18079.390621, es_reg_best:18079.390621
+epoch: 73  lr: 0.5000
+e=73, loss=-0.989351, loss_cos=-0.990633, loss_reg=20027.153500, cur_reg_best=18079.390621, es_reg_best:18079.390621
+epoch: 74  lr: 0.5000
+e=74, loss=-0.987786, loss_cos=-0.989075, loss_reg=20136.559526, cur_reg_best=18079.390621, es_reg_best:18079.390621
+epoch: 75  lr: 0.5000
+e=75, loss=-0.990616, loss_cos=-0.991913, loss_reg=20278.432248, cur_reg_best=18079.390621, es_reg_best:18079.390621
+epoch: 76  lr: 0.5000
+e=76, loss=-0.990559, loss_cos=-0.991870, loss_reg=20475.964385, cur_reg_best=18079.390621, es_reg_best:18079.390621
+epoch: 77  lr: 0.5000
+e=77, loss=-0.987641, loss_cos=-0.988965, loss_reg=20683.248542, cur_reg_best=18079.390621, es_reg_best:18079.390621
+epoch: 78  lr: 0.5000
+e=78, loss=-0.988162, loss_cos=-0.989505, loss_reg=20985.153440, cur_reg_best=18079.390621, es_reg_best:18079.390621
+epoch: 79  lr: 0.5000
+e=79, loss=-0.988961, loss_cos=-0.990324, loss_reg=21282.646949, cur_reg_best=18079.390621, es_reg_best:18079.390621
+epoch: 80  lr: 0.5000
+e=80, loss=-0.988553, loss_cos=-0.989933, loss_reg=21555.455836, cur_reg_best=18079.390621, es_reg_best:18079.390621
+epoch: 81  lr: 0.5000
+e=81, loss=-0.989541, loss_cos=-0.990936, loss_reg=21791.939221, cur_reg_best=18079.390621, es_reg_best:18079.390621
+epoch: 82  lr: 0.5000
+e=82, loss=-0.988246, loss_cos=-0.989653, loss_reg=21986.747417, cur_reg_best=18079.390621, es_reg_best:18079.390621
+epoch: 83  lr: 0.5000
+e=83, loss=-0.990984, loss_cos=-0.992397, loss_reg=22071.005592, cur_reg_best=18079.390621, es_reg_best:18079.390621
+Early stop!
+End:474.8641s
+L1:18079.3906:output/CLIP_text/stl10_backdoored_encoder/model_19_tg24_imagenet.pth:
+reg: 63100.12,24491.4,8230.01,3725.66,2848.08,2584.76,2466.33,2490.23,2572.58,2644.34,2743.57,2854.75,2963.38,3090.26,3239.93,3396.82,3545.89,3723.91,3883.4,4005.83,4096.74,4202.04,4347.14,4494.92,4618.54,4717.65,4824.33,4958.97,5058.97,5185.57,5341.12,5531.65,5725.55,6001.2,6318.2,6602.53,6850.87,7127.17,7493.26,7882.27,8368.85,8728.79,9012.42,9320.85,9605.87,9916.51,10168.08,10479.67,11043.07,11785.06,12338.5,12803.62,13370.26,14226.5,14941.9,15518.98,15982.96,16332.36,16581.15,16736.95,16873.66,17127.68,17495.45,17770.86,18021.03,18227.31,18364.75,18550.35,18778.42,19089.63,19338.19,19571.15,19826.35,20027.15,20136.56,20278.43,20475.96,20683.25,20985.15,21282.65,21555.46,21791.94,21986.75,22071.01
+cos: 0.75,0.55,0.51,0.57,0.53,0.59,0.72,0.65,0.71,0.78,0.8,0.79,0.81,0.83,0.88,0.88,0.88,0.89,0.91,0.94,0.93,0.94,0.93,0.96,0.96,0.95,0.97,0.95,0.96,0.96,0.97,0.97,0.96,0.96,0.96,0.96,0.97,0.96,0.97,0.97,0.97,0.97,0.97,0.97,0.98,0.98,0.98,0.97,0.96,0.97,0.97,0.97,0.97,0.98,0.98,0.97,0.98,0.98,0.98,0.98,0.98,0.98,0.98,0.98,0.99,0.99,0.99,0.99,0.99,0.99,0.98,0.99,0.99,0.99,0.99,0.99,0.99,0.99,0.99,0.99,0.99,0.99,0.99,0.99

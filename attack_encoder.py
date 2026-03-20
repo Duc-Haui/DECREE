@@ -21,7 +21,8 @@ from imagenet import getBackdoorImageNet, get_processing
 def train(backdoored_encoder, clean_encoder, data_loader, train_optimizer, args):
     # backdoored_encoder = backdoored_encoder.cuda()
     backdoored_encoder.train()
-    DEVICE = torch.device(f'cuda:{args.gpu}')
+    DEVICE = torch.device(f'cuda:{args.gpu}' if torch.cuda.is_available() else 'cpu')
+    print(f'Using device: {DEVICE}')
     for module in backdoored_encoder.modules():
     # print(module)
         if isinstance(module, nn.BatchNorm2d):
@@ -197,8 +198,9 @@ if __name__ == '__main__':
 
     # Set the seed and determine the GPU
     os.environ["CUDA_DEVICE_ORDER"]="PCI_BUS_ID"
-    os.environ["CUDA_VISIBLE_DEVICES"]= args.gpu
-    DEVICE = torch.device(f'cuda:{args.gpu}')
+    # os.environ["CUDA_VISIBLE_DEVICES"]= args.gpu
+    DEVICE = torch.device(f'cuda:{args.gpu}' if torch.cuda.is_available() else 'cpu')
+    print(f'Using device: {DEVICE}') 
     random.seed(args.seed)
     os.environ['PYTHONHASHSEED'] = str(args.seed)
     np.random.seed(args.seed)
@@ -222,16 +224,20 @@ if __name__ == '__main__':
                         test_transform=test_transform,
                         reference_word=args.reference_word,
                         poison_rate=5e-4)
-        clean_clip, preprocess = clip.load("RN50", "cuda:" + args.gpu)
+        # add line 228 it to this because its crash wsl and cant run run_decree.py 
+        shadow_data = torch.utils.data.Subset(shadow_data, range(20))
+        clean_clip, preprocess = clip.load("RN50", DEVICE)
     else:
         shadow_data, memory_data, test_data_clean, test_data_backdoor = get_shadow_dataset(args)
 
     print(f'shadow datasize: {len(shadow_data)}')
-    
-    train_loader = DataLoader(shadow_data, batch_size=args.batch_size, 
-                            shuffle=True, num_workers=2, 
-                            pin_memory=True, drop_last=True)
-
+    # original code 
+    # train_loader = DataLoader(shadow_data, batch_size=args.batch_size, 
+    #                         shuffle=True, num_workers=2, 
+    #                         pin_memory=True, drop_last=True)
+    # code after fix for wsl crash
+    train_loader = DataLoader( shadow_data, batch_size=args.batch_size, shuffle=True, num_workers=0, pin_memory=False, drop_last=True
+    )
     clean_model = get_encoder_architecture_usage(args).to(DEVICE)
     model = get_encoder_architecture_usage(args).to(DEVICE)
 

@@ -11,6 +11,8 @@ from tqdm import tqdm
 import torch
 import torch.nn as nn
 import torch.nn.functional as F
+import torch.multiprocessing # Thêm dòng này (nếu chưa có)
+
 
 from datasets import get_dataset_evaluation
 from models import get_encoder_architecture_usage
@@ -51,7 +53,8 @@ if __name__ == '__main__':
     torch.backends.cudnn.benchmark = False
     torch.backends.cudnn.deterministic = True
     # torch.cuda.manual_seed_all(seed)  # if you are using multi-GPU.
-
+    # THÊM DÒNG NÀY ĐỂ FIX LỖI "Too many open files"
+    torch.multiprocessing.set_sharing_strategy('file_system')
 
     assert args.reference_label >= 0, 'Enter the correct target class'
 
@@ -59,18 +62,19 @@ if __name__ == '__main__':
     args.data_dir = f'./data/{args.dataset}/'
     target_dataset, train_data, test_data_clean, test_data_backdoor = get_dataset_evaluation(args)
 
-
-    train_loader = DataLoader(train_data, batch_size=args.batch_size, shuffle=False, num_workers=2, pin_memory=True)
-    test_loader_clean = DataLoader(test_data_clean, batch_size=args.batch_size, shuffle=False, num_workers=2,
+    #change num_workers to 0 to avoid "Too many open files" error
+    train_loader = DataLoader(train_data, batch_size=args.batch_size, shuffle=False, num_workers=0, pin_memory=True)
+    test_loader_clean = DataLoader(test_data_clean, batch_size=args.batch_size, shuffle=False, num_workers=0,
                                    pin_memory=True)
-    test_loader_backdoor = DataLoader(test_data_backdoor, batch_size=args.batch_size, shuffle=False, num_workers=2,
+    test_loader_backdoor = DataLoader(test_data_backdoor, batch_size=args.batch_size, shuffle=False, num_workers=0,
                                       pin_memory=True)
 
-    target_loader = DataLoader(target_dataset, batch_size=args.batch_size, shuffle=False, num_workers=2, pin_memory=True)
+    target_loader = DataLoader(target_dataset, batch_size=args.batch_size, shuffle=False, num_workers=0, pin_memory=True)
 
     num_of_classes = len(train_data.classes)
 
-    device = torch.device(f'cuda:{args.gpu}')
+    device = torch.device(f'cuda:{args.gpu}' if torch.cuda.is_available() else 'cpu')
+    print(f'Using device: {device}')
     model = get_encoder_architecture_usage(args).to(device)
     if args.encoder != '':
         print('Loaded from: {}'.format(args.encoder))

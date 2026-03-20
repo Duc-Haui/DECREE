@@ -62,7 +62,7 @@ def create_torch_dataloader(feature_bank, label_bank, batch_size, shuffle=False,
 
 
 def net_train(net, train_loader, optimizer, epoch, criterion, args):
-    device = torch.device(f'cuda:{args.gpu}')
+    device = torch.device('cpu' if args.gpu == 'cpu' or not torch.cuda.is_available() else f'cuda:{args.gpu}')
     """Training"""
     net.train()
     overall_loss = 0.0
@@ -79,7 +79,8 @@ def net_train(net, train_loader, optimizer, epoch, criterion, args):
 
 
 def net_test(net, test_loader, epoch, criterion, args, keyword='Accuracy'):
-    device = torch.device(f'cuda:{args.gpu}')
+    device = torch.device(f'cuda:{args.gpu}' if torch.cuda.is_available() else 'cpu')
+    print(f'Using device: {device}')
     """Testing"""
     net.eval()
     test_loss = 0.0
@@ -110,7 +111,7 @@ def predict_feature(net, data_loader, args=None):
     if args is None:
         device = torch.device('cuda:0')
     else:
-        device = torch.device(f'cuda:{args.gpu}')
+        device = torch.device('cpu' if args.gpu == 'cpu' or not torch.cuda.is_available() else f'cuda:{args.gpu}')
     net.eval()
     feature_bank, target_bank = [], []
     with torch.no_grad():

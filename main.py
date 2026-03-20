@@ -82,7 +82,8 @@ def main(args):
     # only allow those CuDNN algorithms that are (believed to be) deterministic
     torch.backends.cudnn.deterministic = True 
 
-    DEVICE = torch.device(f'cuda:{args.gpu}')
+    DEVICE = torch.device(f'cuda:{args.gpu}' if torch.cuda.is_available() else 'cpu')
+    print(f'Using device: {DEVICE}')
     """ckpt:
     epoch
     state_dict:
@@ -196,9 +197,9 @@ def main(args):
     total_trained_param = sum(p.numel() for p in model.parameters() if p.requires_grad)
 
     # print(f'{model_ckpt_path}:{total_param},{total_trained_param}')
-
+    clean_train_data = torch.utils.data.Subset(clean_train_data, range(20))
     clean_train_loader = DataLoader(clean_train_data, 
-                    batch_size=args.batch_size, pin_memory=True, shuffle=True)
+                    batch_size=args.batch_size, pin_memory=False, shuffle=True)
 
     print('shadow transform:', test_transform)
     print('shadow dataset size:', len(clean_train_data))
@@ -216,7 +217,7 @@ def main(args):
     adaptor_lambda = 5.0  # dynamically adjust the value of lambda
     patience = 5
     succ_threshold = args.thres # cos-loss threshold for a successful reversed trigger
-    epochs = 1000
+    epochs = 100
     # early stop
     regular_best = 1 / epsilon()
     early_stop_reg_best =  regular_best

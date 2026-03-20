@@ -2,6 +2,7 @@ import os
 from os import listdir
 from os.path import isfile, join
 
+
 def run(gpu, encoder_path, res_file, batch_size=64
         , id='_vrfy'
         ):
@@ -20,7 +21,7 @@ def run(gpu, encoder_path, res_file, batch_size=64
 
 
 dir_list = [
-            # 'output/CLIP_text/clean_encoder',
+            'output/CLIP_text/clean_encoder',
             'output/CLIP_text/stl10_backdoored_encoder',
             'output/CLIP_text/svhn_backdoored_encoder',
             'output/CLIP_text/gtsrb_backdoored_encoder',

@@ -20,7 +20,9 @@ def main(args):
     # Set the seed and determine the GPU
     os.environ["CUDA_DEVICE_ORDER"]="PCI_BUS_ID"
     # os.environ["CUDA_VISIBLE_DEVICES"]= args.gpu
-    DEVICE = torch.device(f'cuda:{args.gpu}')
+    # DEVICE = torch.device(f'cuda:{args.gpu}') sửa lại thành cpu để chạy trên cpu, nếu muốn chạy trên gpu thì bỏ comment dòng này và comment dòng dưới
+    DEVICE = torch.device(f'cuda:{args.gpu}' if torch.cuda.is_available() else 'cpu')
+    print(f'Using device: {DEVICE}')
     random.seed(args.seed)
     os.environ['PYTHONHASHSEED'] = str(args.seed)
     np.random.seed(args.seed)
@@ -29,10 +31,16 @@ def main(args):
     torch.backends.cudnn.benchmark = False
     torch.backends.cudnn.deterministic = True
 
+    #check gpu conda env: nvidia-smi, conda list | grep torch, conda list | grep torchvision
+    if torch.cuda.is_available():
+        torch.cuda.manual_seed(args.seed)
+        torch.backends.cudnn.benchmark = False
+        torch.backends.cudnn.deterministic = True
+    
     ## load model
     ckpt_file = args.encoder_path
     model = CLIP(1024, 224, vision_layers=(3, 4, 6, 3), vision_width=64).to(DEVICE)
-    ckpt = torch.load(ckpt_file)
+    ckpt = torch.load(ckpt_file, map_location=DEVICE) # add map_location to load on cpu if gpu not available
 
     # print(ckpt['state_dict'].keys())
     if 'conv1.weight' in ckpt['state_dict']:
@@ -64,14 +72,14 @@ def main(args):
     #                 poison_rate=1)
     
 
-    subset_idx = random.sample(range(len(dataset)), 500)
+    subset_idx = random.sample(range(len(dataset)), 200)
     # subset_size = 2000
     dataset = torch.utils.data.Subset(dataset, subset_idx)
     print('datalen:',len(dataset))
     loader_single = DataLoader(dataset, batch_size=args.batch_size, 
-                            num_workers=4, pin_memory=True, shuffle=True)
+                            num_workers=4, pin_memory=torch.cuda.is_available(), shuffle=True) # if gpu oke is set true, else false to avoid error on cpu
     loader_batch = DataLoader(dataset, batch_size=args.batch_size, 
-                            num_workers=4, pin_memory=True, shuffle=True)
+                            num_workers=4, pin_memory=torch.cuda.is_available(), shuffle=True)
 
     print(f"flag is {flag}")
     model.visual.eval()

@@ -1,5 +1,8 @@
 **/__pycache__
 **/log
+**/trigger_inv
+**/vallog
 data
 output
 *.png
+*.txt
